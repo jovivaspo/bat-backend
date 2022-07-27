@@ -1,0 +1,28 @@
+###
+GET http://localhost:8000/uses/62dfddcdc6c5924f08f4171c
+
+###
+POST http://localhost:8000/uses/62dfddcdc6c5924f08f4171c
+Content-Type: application/json
+
+{
+    "dateInit": "01/02/2022 08:10",
+    "dateEnd": "01/02/2022 09:10"
+}
+
+###
+GET http://localhost:8000/uses/62dfddcdc6c5924f08f4171c/62e115aabb895b1ca92af0a3
+
+###
+PUT http://localhost:8000/uses/62dfddcdc6c5924f08f4171c/62e115aabb895b1ca92af0a3
+Content-Type: application/json
+
+{   "dateInit": "01/02/2022 18:10",
+    "dateEnd": "01/02/2022 19:10"
+}
+
+###
+DELETE http://localhost:8000/uses/62dfddcdc6c5924f08f4171c/62e1130348f269b2e9bc3715
+
+###
+DELETE http://localhost:8000/uses/deleteAllUses

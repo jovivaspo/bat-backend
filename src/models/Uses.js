@@ -1,7 +1,7 @@
 const { Schema, model, models } = require('mongoose')
 
 const usesSchema = new Schema({
-   user:[{type:Schema.Types.ObjectId,ref:'User'}],
+   user:{type:Schema.Types.ObjectId,ref:'User'},
    dateInit:{
     type:Date,
     required:[true, 'Date init is required']
