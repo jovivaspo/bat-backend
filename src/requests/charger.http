@@ -1,0 +1,8 @@
+###
+POST http://localhost:8000/charger
+Content-Type: application/json
+
+{
+    "name":"Charger 1",
+
+}

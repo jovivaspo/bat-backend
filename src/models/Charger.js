@@ -2,13 +2,12 @@ const { Schema, model, models } = require('mongoose')
 
 const chargerSchema = new Schema({
     name: {type:String},
-    uses: [{ type: Schema.Types.ObjectId, ref: 'Uses' }],
     state: {
         type: [{
             type: String,
             enum: ['free', 'working', 'fault', 'locked']
         }],
-        default: ['free']
+        default: 'free'
     }
 }, {
     timestamps: true,
@@ -16,7 +15,7 @@ const chargerSchema = new Schema({
 })
 
 
-usesSchema.set('toJSON', {
+chargerSchema.set('toJSON', {
     transform: (document, returnObject) => {
         delete returnObject.__v
     }
