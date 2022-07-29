@@ -18,6 +18,11 @@ const userSchema = new Schema({
         unique: true,
 
     },
+    verified: {
+        type:String,
+        enum:['Not verified', 'Verified'],
+        default:'Not verified'
+    },
     role: {
         type: [{
             type: String,

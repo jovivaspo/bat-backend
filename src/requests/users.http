@@ -1,15 +1,29 @@
 ###
 GET  http://localhost:8000/user
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZjYzdlZGRkYzUxNzIzY2ViOTBkZiIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY1OTA5NjAzMCwiZXhwIjoxNjU5MTgyNDMwfQ.BnKs6LvM9CzaPkKZP6bgvN1Vp94r04GvC8gmwB9CvHM
+
 
 ###
-GET  http://localhost:8000/user/62dfcc7edddc51723ceb90df
+GET  http://localhost:8000/user/62e3cce7fe3c552ee8f18742
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTNjY2U3ZmUzYzU1MmVlOGYxODc0MiIsImVtYWlsIjoiZGF2aWRAZ21haWwuY29tIiwiaWF0IjoxNjU5MDk2NDc3LCJleHAiOjE2NTkxODI4Nzd9.plDc2_uljwNfZ97itOk9KawsYSeXEZXL2f1waEjKK9c
+
 
 ###
 POST http://localhost:8000/user/register
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZjYzdlZGRkYzUxNzIzY2ViOTBkZiIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY1OTA5NjAzMCwiZXhwIjoxNjU5MTgyNDMwfQ.BnKs6LvM9CzaPkKZP6bgvN1Vp94r04GvC8gmwB9CvHM
 
 {
-    "name":"Pedro Fernandez",
+    "name":"jorge usuario",
+    "email":"jorgevivas@innogestiona.es",
+    "password":"abcabc"
+}
+
+###
+POST http://localhost:8000/user/login
+Content-Type: application/json
+
+{
     "email":"pedrofer@gmail.com",
     "password":"abcabc"
 }
@@ -19,20 +33,24 @@ POST http://localhost:8000/user/login
 Content-Type: application/json
 
 {
-    "email":"pedro@gmail.com",
+    "email":"david@gmail.com",
     "password":"abcabc"
 }
 
+
 ###
 DELETE http://localhost:8000/user/delete/62dfd7b2519064a66b642c13
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTEyNTA3ZTBjY2FkOTgzMTIzZGI3MCIsImVtYWlsIjoicGVkcm9mZXJAZ21haWwuY29tIiwiaWF0IjoxNjU5MDk0NjM4LCJleHAiOjE2NTkxODEwMzh9.CVvGiEeWtKyEVuw09x5zfnLcCcBZtGp9Ru20DWcvW-A
 
 ###
 DELETE http://localhost:8000/user/delete/users
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZjYzdlZGRkYzUxNzIzY2ViOTBkZiIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY1OTA5NjAzMCwiZXhwIjoxNjU5MTgyNDMwfQ.BnKs6LvM9CzaPkKZP6bgvN1Vp94r04GvC8gmwB9CvHM
+
 
 ###
-PUT http://localhost:8000/user/update/62dfddcdc6c5924f08f4171c
-Content-Type: application/json
+PUT http://localhost:8000/user/update/62e3cce7fe3c552ee8f18742
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTNjY2U3ZmUzYzU1MmVlOGYxODc0MiIsImVtYWlsIjoiZGF2aWRAZ21haWwuY29tIiwiaWF0IjoxNjU5MDk2NDc3LCJleHAiOjE2NTkxODI4Nzd9.plDc2_uljwNfZ97itOk9KawsYSeXEZXL2f1waEjKK9c
 
 {
-    "email":"pedro@gmail.com"
+    "email":"davidSerrano@gmail.com"
 }

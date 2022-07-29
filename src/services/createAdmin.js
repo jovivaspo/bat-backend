@@ -11,7 +11,8 @@ const createAdmin = async (config) => {
                 name:config.NAME_ADMIN,
                 password: config.PASSWORD_ADMIN,
                 email: config.EMAIL_ADMIN,
-                role: 'admin'
+                role: 'admin',
+                verified:'Verified'
             })
 
             newAdmin.password = await newAdmin.encryptPassword(newAdmin.password)

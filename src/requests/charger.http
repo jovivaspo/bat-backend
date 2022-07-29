@@ -3,6 +3,21 @@ POST http://localhost:8000/charger
 Content-Type: application/json
 
 {
-    "name":"Charger 1",
+    "name":"Charger 1"
 
 }
+
+
+###
+DELETE http://localhost:8000/charger/62e12898e58eb15f88d1a24c
+
+###
+GET  http://localhost:8000/charger/62e129d3c3c4e13343431bdf
+
+
+###
+GET  http://localhost:8000/charger/all
+
+
+
+

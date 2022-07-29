@@ -16,6 +16,9 @@ module.exports = {
     URI_MONGO: process.env.URI_MONGO,
     NAME_ADMIN: process.env.NAME_ADMIN,
     PASSWORD_ADMIN: process.env.PASSWORD_ADMIN,
-    EMAIL_ADMIN: process.env.EMAIL_ADMIN
+    EMAIL_ADMIN: process.env.EMAIL_ADMIN,
+    KEY: process.env.KEY,
+    SEND_EMAIL: process.env.SEND_EMAIL,
+    SEND_PASS: process.env.SEND_PASS
 
 }

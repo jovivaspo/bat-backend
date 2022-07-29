@@ -1,12 +1,17 @@
 ###
 GET http://localhost:8000/uses/all
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGZjYzdlZGRkYzUxNzIzY2ViOTBkZiIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY1OTA5NjAzMCwiZXhwIjoxNjU5MTgyNDMwfQ.BnKs6LvM9CzaPkKZP6bgvN1Vp94r04GvC8gmwB9CvHM
 
 ###
-GET http://localhost:8000/uses/62e12507e0ccad983123db70
+GET http://localhost:8000/uses/62e3cce7fe3c552ee8f18742
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTNjY2U3ZmUzYzU1MmVlOGYxODc0MiIsImVtYWlsIjoiZGF2aWRAZ21haWwuY29tIiwiaWF0IjoxNjU5MDk2NDc3LCJleHAiOjE2NTkxODI4Nzd9.plDc2_uljwNfZ97itOk9KawsYSeXEZXL2f1waEjKK9c
+
 
 ###
-POST http://localhost:8000/uses/62e12507e0ccad983123db70
+POST http://localhost:8000/uses/62e3cce7fe3c552ee8f18742
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTNjY2U3ZmUzYzU1MmVlOGYxODc0MiIsImVtYWlsIjoiZGF2aWRAZ21haWwuY29tIiwiaWF0IjoxNjU5MDk2NDc3LCJleHAiOjE2NTkxODI4Nzd9.plDc2_uljwNfZ97itOk9KawsYSeXEZXL2f1waEjKK9c
+
 
 {
     "dateInit": "01/02/2022 08:10",
@@ -25,6 +30,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:8000/uses/62e12507e0ccad983123db70/62e1254fe0ccad983123db7b
+DELETE http://localhost:8000/uses/62e3cce7fe3c552ee8f18742/62e3cf19f19633b8213725da
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTNjY2U3ZmUzYzU1MmVlOGYxODc0MiIsImVtYWlsIjoiZGF2aWRAZ21haWwuY29tIiwiaWF0IjoxNjU5MDk2NDc3LCJleHAiOjE2NTkxODI4Nzd9.plDc2_uljwNfZ97itOk9KawsYSeXEZXL2f1waEjKK9c
 
 

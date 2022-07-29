@@ -3,18 +3,21 @@ const {Router} = require('express')
 
 /*CONTROLLERS*/
 const userCtrl  = require('../controllers/userController')
+const verifyTokenAdmin = require('../middleware/verifyTokenAdmin')
+const verifyTokenUser = require('../middleware/verifyTokenUser')
 
 
 const router = Router()
 
 /*USERS*/
 router.get('/', userCtrl.getAllUsers)
-router.get('/:id', userCtrl.getOneUser)
-router.post('/register', userCtrl.createUser)
+router.get('/:id', verifyTokenUser, userCtrl.getOneUser)
+router.post('/register', verifyTokenAdmin, userCtrl.createUser)
+router.get('/confirm/:token', userCtrl.confirm)
 router.post('/login', userCtrl.loginUser)
-router.delete('/delete/users', userCtrl.deleteAllUser)
-router.delete('/delete/:id', userCtrl.deleteUser)
-router.put('/update/:id', userCtrl.updateUser)
+router.delete('/delete/users', verifyTokenAdmin, userCtrl.deleteAllUser)
+router.delete('/delete/:id', verifyTokenAdmin, userCtrl.deleteUser)
+router.put('/update/:id', verifyTokenUser , userCtrl.updateUser)
 
 
 
