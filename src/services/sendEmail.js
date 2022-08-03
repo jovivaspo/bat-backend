@@ -1,6 +1,6 @@
 const transporter = require('../configEmail')
 
-const sendEmail = async (userEmail,token) => {
+const sendEmail = async (userEmail, token) => {
 
     try {
         const email = await transporter.sendMail({
@@ -8,9 +8,9 @@ const sendEmail = async (userEmail,token) => {
             to: userEmail,
             subject:"Confirmación de cuenta",
             html:`
-            <h1>BIENVENIDO A TEACHER'S BOOK</h1>
-            <p>Por favor, ingrese en el siguiente enlace para confirmar su correo</p>
-            <a href=http://localhost:8001/api/user/confirm/${token}>Confirmar Cuenta</a>
+            <h1>BIENVENIDO A BATTMOBIL</h1>
+            <p>Por favor, ingrese en el siguiente enlace para confirmar su correo.</p>
+            <a href=http://localhost:8000/user/confirm/${token}>Confirmar Cuenta</a>
             `
         })
 

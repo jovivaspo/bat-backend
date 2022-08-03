@@ -23,6 +23,7 @@ app.use(cors())
 app.use(helmet())
 app.use(express.json())
 
+
 /*ROUTES*/
 app.use('/user', require('./routers/userRouter'))
 app.use('/uses', require('./routers/usesRouter'))

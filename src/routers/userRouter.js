@@ -10,7 +10,7 @@ const verifyTokenUser = require('../middleware/verifyTokenUser')
 const router = Router()
 
 /*USERS*/
-router.get('/', userCtrl.getAllUsers)
+router.get('/', verifyTokenAdmin, userCtrl.getAllUsers)
 router.get('/:id', verifyTokenUser, userCtrl.getOneUser)
 router.post('/register', verifyTokenAdmin, userCtrl.createUser)
 router.get('/confirm/:token', userCtrl.confirm)

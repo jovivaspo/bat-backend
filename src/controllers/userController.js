@@ -2,6 +2,9 @@
 const User = require('../models/User')
 const createToken = require('../services/createToken')
 const sendEmail = require('../services/sendEmail')
+const path = require('path')
+const jwt = require('jsonwebtoken')
+const config = require('../config')
 
 const userCtrl = {}
 
@@ -61,6 +64,8 @@ userCtrl.createUser = async (req, res, next) => {
 
             await sendEmail(userSaved.email, token)
 
+            console.log(token)
+
             return res.status(201).json({
                 message: 'User created',
                 user: {
@@ -80,36 +85,60 @@ userCtrl.confirm = async (req, res, next) => {
     try {
         const token = req.params.token
 
-        const decodedToken = jwt.verify(token, config.KEY)
+        jwt.verify(token, config.KEY, async (err, decodedToken) => {
+            if (err) {
+                res.status(401)
+                const error = new Error(err.name)
+                return res.sendFile(path.join(__dirname, '../static/errorToken.html'))
+            }
+            
+            const user = await User.findOne({ email: decodedToken.email })
+            console.log(user)
+            if (!user || user.role.includes('admin') ||  user.verified === "Verified") {
+                res.status(401)
+                const error = new Error("Permiso denegado")
+                return next(error)
+            }
+    
+            user.verified = "Verified"
 
-        if (!token || !decodedToken.id) {
-            res.status(401)
-            const error = new Error("Token invalido")
-            return next(error)
-        }
+            const userSaved = await user.save()
 
-        const user = await User.findOne({ email: decodedToken.email })
-
-        if (!user) {
-            const error = new Error("Este correo es inválido")
-            res.status(401)
-            return next(error)
-        }
-
-        user.verified = "Verified"
-
-        const userSaved = await user.save()
-
-        const newToken = createToken(userSaved._id, userSaved.email)
-
-        return res.status(200).json({
-            token: newToken,
-            user: userSaved
+            return res.sendFile(path.join(__dirname,'../static/confirm.html'))
         })
+
 
     } catch (error) {
         console.log(error)
         res.status(401)
+        next(error)
+    }
+}
+
+userCtrl.resendEmail = async (req, res, next) => {
+
+    try {
+
+        const email = req.body.email
+
+        const user = await User.findOne({ email })
+
+        if (!user) {
+            const error = new Error("Email no registrado")
+            res.status(401)
+            return next(error)
+        }
+
+        const token = createToken(user._id, email)
+
+        await sendEmail(email, token)
+
+        return res.status(200).json({
+            message: "Correo de confirmación reenviado",
+        })
+
+    } catch (error) {
+        console.log(error)
         next(error)
     }
 }

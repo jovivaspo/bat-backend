@@ -28,7 +28,7 @@ const verifyTokenUser = async (req, res, next) => {
 
             if (user.verified === "Not verified") {
                 res.status(401)
-                const error = new Error("Debe confirmar su cuenta")
+                const error = new Error("Debe confirmar su cuenta de correo")
                 return next(error)
             }
     
