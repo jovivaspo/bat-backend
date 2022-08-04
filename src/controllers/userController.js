@@ -154,9 +154,12 @@ userCtrl.loginUser = async (req, res, next) => {
             res.status(401)
             return next(error)
         }
+
         const match = await user.matchPassword(password)
 
         if (!match) {
+            user.attempts++
+            await user.save()
             const error = new Error('Password incorrect')
             res.status(401)
             return next(error)
@@ -164,7 +167,13 @@ userCtrl.loginUser = async (req, res, next) => {
 
         const token = createToken(user._id, user.email)
 
-        return res.status(201).json({ user, token })
+        user.lastSession = new Date()
+
+        user.attempts = 0
+
+        const userSaved = await user.save()
+
+        return res.status(201).json({ user: userSaved, token })
 
 
     } catch (error) {

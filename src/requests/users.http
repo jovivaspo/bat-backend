@@ -20,6 +20,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTNkNjAwZ
 
 ###
 GET  http://localhost:8000/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWEyZjM2NmQzZGRlYmUyNTU2ZjA2ZSIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NTk1MTQ2NzgsImV4cCI6MTY1OTYwMTA3OH0.qq0dCckCHf3e8FJ81yE0rJceeaeSmcHGK6slsOTJ41g
+
 ###
 POST http://localhost:8000/user/login
 Content-Type: application/json
@@ -35,7 +36,7 @@ Content-Type: application/json
 
 {
     "email":"david@gmail.com",
-    "password":"abcabc"
+    "password":"abcab"
 }
 
 

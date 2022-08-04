@@ -1,6 +1,7 @@
 /*MODULES*/
 const { Schema, model, models } = require('mongoose')
 const bcrypt = require('bcryptjs')
+const sleep = require('../services/wait')
 
 const userSchema = new Schema({
     name: {
@@ -30,7 +31,11 @@ const userSchema = new Schema({
         }],
         default: 'user'
     },
-    uses:[{type:Schema.Types.ObjectId,ref:'Uses'}]
+    uses:[{type:Schema.Types.ObjectId,ref:'Uses'}],
+    lastSession:{
+        type:Date
+    },
+    attempts:{type:Number, default:0}
 }, {
     timestamps: true,
     versionKey: false
@@ -42,6 +47,7 @@ userSchema.methods.encryptPassword = async (password) => {
 }
 
 userSchema.methods.matchPassword = async function (password) {
+    await sleep(3000)
     return await bcrypt.compare(password, this.password)
 }
 
