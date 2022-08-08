@@ -55,7 +55,6 @@ userSchema.set('toJSON', {
     transform: (document, returnObject) => {
         delete returnObject.__v
         delete returnObject.password
-        delete returnObject.role
     }
 })
 

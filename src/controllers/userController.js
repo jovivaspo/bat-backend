@@ -27,7 +27,7 @@ userCtrl.getOneUser = async (req, res, next) => {
         const user = await User.findById(id)
 
         if (user) {
-            return res.status(200).json(user)
+            return res.status(200).json({user})
         } else {
             const error = new Error('User does not found')
             res.status(404)
@@ -119,6 +119,8 @@ userCtrl.resendEmail = async (req, res, next) => {
 
     try {
 
+        console.log('Reenviando')
+
         const email = req.body.email
 
         const user = await User.findOne({ email })
@@ -150,6 +152,7 @@ userCtrl.loginUser = async (req, res, next) => {
         const user = await User.findOne({ email: email })
 
         if (!user || user.length === 0) {
+            console.log('Email not exist, ', email)
             const error = new Error('Email not exist')
             res.status(401)
             return next(error)
@@ -158,8 +161,10 @@ userCtrl.loginUser = async (req, res, next) => {
         const match = await user.matchPassword(password)
 
         if (!match) {
+            
             user.attempts++
             await user.save()
+            console.log('Password incorrect, ', email)
             const error = new Error('Password incorrect')
             res.status(401)
             return next(error)
@@ -172,6 +177,8 @@ userCtrl.loginUser = async (req, res, next) => {
         user.attempts = 0
 
         const userSaved = await user.save()
+
+        console.log("Inicio sesión: ", email)
 
         return res.status(201).json({ user: userSaved, token })
 
