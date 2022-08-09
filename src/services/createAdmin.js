@@ -1,5 +1,7 @@
 /*MODULES*/
 const User = require('../models/User')
+const createToken = require('./createToken')
+const sendEmail = require('./sendEmail')
 
 const createAdmin = async (config) => {
     try{
@@ -12,12 +14,16 @@ const createAdmin = async (config) => {
                 password: config.PASSWORD_ADMIN,
                 email: config.EMAIL_ADMIN,
                 role: 'admin',
-                verified:'Verified'
+                verified:'Not verified'
             })
 
             newAdmin.password = await newAdmin.encryptPassword(newAdmin.password)
-            await newAdmin.save()
+            const AdminSaved = await newAdmin.save()
             console.log('Admin created')
+            
+            const token = createToken(AdminSaved._id, config.EMAIL_ADMIN)
+
+            await sendEmail(config.EMAIL_ADMIN , token)
 
         }
         if(admin){

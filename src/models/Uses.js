@@ -2,6 +2,7 @@ const { Schema, model, models } = require('mongoose')
 
 const usesSchema = new Schema({
    user:{type:Schema.Types.ObjectId,ref:'User'},
+   charger:{type:Schema.Types.ObjectId,ref:'Charger'},
    dateInit:{
     type:Date,
     required:[true, 'Date init is required']

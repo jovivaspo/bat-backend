@@ -64,8 +64,6 @@ userCtrl.createUser = async (req, res, next) => {
 
             await sendEmail(userSaved.email, token)
 
-            console.log(token)
-
             return res.status(201).json({
                 message: 'User created',
                 user: {
@@ -94,7 +92,7 @@ userCtrl.confirm = async (req, res, next) => {
             
             const user = await User.findOne({ email: decodedToken.email })
             console.log(user)
-            if (!user || user.role.includes('admin') ||  user.verified === "Verified") {
+            if (!user  ||  user.verified === "Verified") {
                 res.status(401)
                 const error = new Error("Permiso denegado")
                 return next(error)
@@ -161,13 +159,15 @@ userCtrl.loginUser = async (req, res, next) => {
         const match = await user.matchPassword(password)
 
         if (!match) {
-            
             user.attempts++
-            await user.save()
+            const userSaved = await user.save()
             console.log('Password incorrect, ', email)
             const error = new Error('Password incorrect')
             res.status(401)
-            return next(error)
+            return res.status(401).json({
+                error:error.message,
+                attemps:userSaved.attempts
+            })
         }
 
         const token = createToken(user._id, user.email)

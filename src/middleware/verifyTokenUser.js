@@ -25,6 +25,12 @@ const verifyTokenUser = async (req, res, next) => {
                 const error = new Error("Permiso denegado")
                 return next(error)
             }
+
+            if(user.verified === 'Not verified'){
+                res.status(401)
+                const error = new Error("Verifique su cuenta de correo")
+                return next(error)
+            }
     
             console.log("Token valido")
             next()

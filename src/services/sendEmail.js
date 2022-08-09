@@ -8,7 +8,7 @@ const sendEmail = async (userEmail, token) => {
             to: userEmail,
             subject:"Confirmación de cuenta",
             html:`
-            <h1>BIENVENIDO A BATTMOBIL</h1>
+            <h1>BIENVENIDO A BATTMÓVIL</h1>
             <p>Por favor, ingrese en el siguiente enlace para confirmar su correo.</p>
             <a href=http://localhost:8000/user/confirm/${token}>Confirmar Cuenta</a>
             `
