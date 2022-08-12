@@ -7,9 +7,9 @@ chargerCtrl.create = async (req, res, next) => {
 
     try {
 
-        const body = req
+        const { name } = req.body
 
-        const charger = new Charger({ body })
+        const charger = new Charger({ name })
 
         const chargerSaved = await charger.save()
 

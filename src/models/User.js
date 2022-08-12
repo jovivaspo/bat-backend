@@ -32,7 +32,7 @@ const userSchema = new Schema({
         default: 'user'
     },
     uses:[{type:Schema.Types.ObjectId,ref:'Uses'}],
-    charger:[{type:Schema.Types.ObjectId,ref:'Charger'}],
+    chargers:[{type:Schema.Types.ObjectId,ref:'Charger'}],
     lastSession:{
         type:Date
     },

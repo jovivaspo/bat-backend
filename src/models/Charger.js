@@ -2,7 +2,7 @@ const { Schema, model, models } = require('mongoose')
 
 const chargerSchema = new Schema({
     name: {type:String},
-    user:[{type:Schema.Types.ObjectId, ref:'User'}],
+    users:[{type:Schema.Types.ObjectId, ref:'User'}],
     uses:[{type:Schema.Types.ObjectId,ref:'Uses'}],
     state: {
         type: [{
