@@ -3,7 +3,7 @@ const mongoose =require('mongoose')
 const config = require('./config')
 
 /*DB CONNECTION*/
-mongoose.connect(config.URI_MONGO)
+mongoose.connect( `mongodb://${config.MONGO_INITDB_ROOT_USERNAME}:${config.MONGO_INITDB_ROOT_PASSWORD}@mongodb:27017/miapp?authSource=admin`)
 
 /*DB EVENTS*/
 mongoose.connection.on('connected',()=>{

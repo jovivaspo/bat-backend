@@ -9,11 +9,11 @@ dotenv.config({
 
 })
 
-
 module.exports = {
     NODE_ENV : process.env.NODE_ENV,
     PORT: process.env.PORT,
-    URI_MONGO: process.env.URI_MONGO,
+    MONGO_INITDB_ROOT_USERNAME:process.env.MONGO_INITDB_ROOT_USERNAME,
+    MONGO_INITDB_ROOT_PASSWORD:process.env.MONGO_INITDB_ROOT_PASSWORD,
     NAME_ADMIN: process.env.NAME_ADMIN,
     PASSWORD_ADMIN: process.env.PASSWORD_ADMIN,
     EMAIL_ADMIN: process.env.EMAIL_ADMIN,

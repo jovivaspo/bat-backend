@@ -6,7 +6,6 @@ const user = {
     pass: config.SEND_PASS
 }
 
-
 let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
