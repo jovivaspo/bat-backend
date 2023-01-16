@@ -26,10 +26,9 @@ services:
     #Asignamos puertos para el servicio
     ports:
       - "27017:27017"
-    #Definimos las variables de entorno
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=battmoviltest
-      - MONGO_INITDB_ROOT_PASSWORD=qofiCmNKohqTwrMO
+    #Definimos las variables de entorno    
+    env_file:
+      - dev.env
     #Evitar logs
     command: mongod --quiet --logpath /dev/null
     #Asignamos el volume donde se guardarán los datos y pasamos la ruta donde mongo guarda los datos.
