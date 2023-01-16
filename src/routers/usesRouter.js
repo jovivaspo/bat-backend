@@ -9,9 +9,12 @@ const verifyTokenUser = require('../middleware/verifyTokenUser')
 const router = Router()
 
 /*USES*/
+/*Routes eneables by the admin*/
 router.get('/all', verifyTokenAdmin , usesCtrl.getAll)
-router.get('/:id_user', verifyTokenUser , usesCtrl.getAllUses)
+
+/*Routes eneables by normal users*/
 router.post('/:id_user', verifyTokenUser,  usesCtrl.createUse)
+router.get('/:id_user', verifyTokenUser , usesCtrl.getAllUses)
 router.get('/:id_user/:id', verifyTokenUser, usesCtrl.getOneUse)
 router.put('/:id_user/:id', verifyTokenUser, usesCtrl.updateUse)
 router.delete('/:id_user/:id', verifyTokenUser, usesCtrl.deleteOneUse)

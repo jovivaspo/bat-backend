@@ -1,0 +1,39 @@
+###GET ONE USER BY ID
+###OK
+GET  http://localhost:8000/user/63c54dffd57ada88eae429cf
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzU0ZGZmZDU3YWRhODhlYWU0MjljZiIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NzM4NzU3MzMsImV4cCI6MTY3Mzk2MjEzM30.NTQOIdnXkOmumPpGgQ9lpIpJ1H5QMY1oVRKZovP-K1Y
+
+###ERROR
+GET  http://localhost:8000/user/62ea32dabb7e4ab335732a36
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzU0ZGZmZDU3YWRhODhlYWU0MjljZiIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NzM4NzUwMTEsImV4cCI6MTY3Mzk2MTQxMX0.tRD5BVkoEusXPBrFb0vO7dAwLs0cDjUPDCUBr0TYh0Q
+
+#####################################################################
+
+###LOGIN
+POST http://localhost:8000/user/login
+Content-Type: application/json
+
+{
+    "email":"jorgevivas@innogestiona.es",
+    "password":"abcabc"
+}
+
+#####################################################################
+###UPDATE
+###OK
+PUT http://localhost:8000/user/update/63c54dffd57ada88eae429cf
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzU0ZGZmZDU3YWRhODhlYWU0MjljZiIsImVtYWlsIjoiZGF2aWRAZ21haWwuY29tIiwiaWF0IjoxNjczODc1NTcwLCJleHAiOjE2NzM5NjE5NzB9.ATMYWmlH_K_KmdAVzn0xEUur1gRv5f9nSsZzCOwn3OY
+Content-Type: application/json
+
+{
+   "email":"jorgevivas@innogestiona.es"
+}
+
+###ERROR
+PUT http://localhost:8000/user/update/62e3cce7fe3c552ee8f18742
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzU0ZGZmZDU3YWRhODhlYWU0MjljZiIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NzM4NzUwMTEsImV4cCI6MTY3Mzk2MTQxMX0.tRD5BVkoEusXPBrFb0vO7dAwLs0cDjUPDCUBr0TYh0Q
+Content-Type: application/json
+
+{
+    "name":"Jorge"
+}

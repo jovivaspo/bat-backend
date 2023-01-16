@@ -14,7 +14,7 @@ usesCtrl.getAllUses = async (req, res, next) => {
         const user = await User.findById(id_user)
 
         if (!user) {
-            const error = new Error('User not found')
+            const error = new Error('Usuario no encontrado')
             res.status(404)
             next(error)
         }
@@ -35,10 +35,13 @@ usesCtrl.createUse = async (req, res, next) => {
         const user = await User.findById(id_user)
 
         if (!user) {
-            const error = new Error('User not found')
+            const error = new Error('Usuario no encontrado')
             res.status(404)
             next(error)
         }
+
+        const  datei =  new Date(dateInit)
+        console.log(datei)
 
         const newUse = new Uses({
             user: id_user,
@@ -53,7 +56,7 @@ usesCtrl.createUse = async (req, res, next) => {
 
         await user.save()
 
-        return res.status(202).json({ useSaved })
+        return res.status(202).json({ message:"Usuario creado", use: useSaved, user })
 
     } catch (error) {
         console.log(error)
@@ -68,7 +71,7 @@ usesCtrl.getOneUse = async (req, res, next) => {
         const user = await User.findById(id_user)
 
         if (!user) {
-            const error = new Error('User not found')
+            const error = new Error('Usuario no encontrado')
             res.status(404)
             return next(error)
         }
@@ -76,12 +79,12 @@ usesCtrl.getOneUse = async (req, res, next) => {
         const use = await Uses.findById(id)
 
         if (!use) {
-            const error = new Error('Use not found')
+            const error = new Error('Uso no encontrado')
             res.status(404)
             return next(error)
         }
 
-        return res.status(202).json({ message:"Use created",use, user })
+        return res.status(200).json({ use})
 
     } catch (error) {
         console.log(error)
@@ -99,7 +102,7 @@ usesCtrl.updateUse = async (req, res, next) => {
         const user = await User.findById(id_user)
 
         if (!user) {
-            const error = new Error('User not found')
+            const error = new Error('Usuario no encontrado')
             res.status(404)
             return next(error)
         }
@@ -107,7 +110,7 @@ usesCtrl.updateUse = async (req, res, next) => {
         const use = await Uses.findById(id)
 
         if (!use) {
-            const error = new Error('Use not found')
+            const error = new Error('Uso no encontrado')
             res.status(404)
             return next(error)
         }
@@ -130,7 +133,7 @@ usesCtrl.updateUse = async (req, res, next) => {
 
         const useUpdated = await Uses.findById(id)
 
-        return res.status(201).json({  message: 'Use Updated', useUpdated })
+        return res.status(201).json({  message: 'Uso actualizado', useUpdated })
 
     } catch (error) {
         console.log(error)
@@ -146,7 +149,7 @@ usesCtrl.deleteOneUse = async (req, res, next) => {
         const user = await User.findById(id_user)
 
         if (!user) {
-            const error = new Error('User not found')
+            const error = new Error('Uuario no encontrado')
             res.status(404)
             return next(error)
         }
@@ -154,7 +157,7 @@ usesCtrl.deleteOneUse = async (req, res, next) => {
         const use = await Uses.findByIdAndDelete(id)
 
         if (!use) {
-            const error = new Error('Use not found')
+            const error = new Error('Uso no encontrado')
             res.status(404)
             return next(error)
         }
@@ -165,7 +168,7 @@ usesCtrl.deleteOneUse = async (req, res, next) => {
 
 
         return res.status(201).json({
-            message: 'Use deleted',
+            message: 'Uso borrado',
             user: userUpdated
         })
 

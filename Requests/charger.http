@@ -1,0 +1,29 @@
+###
+POST http://localhost:8000/charger
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjI0NTBjODI4NjBjN2UxZjA4ODk2OCIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY2MDIwMDUzOCwiZXhwIjoxNjYwMjg2OTM4fQ.axUAo5_RP-wnzpr1NLj4C2nKqz_Us3Fj_992A0Tm8U4
+
+
+{
+    "name":"Cargador 6"
+
+}
+
+
+###
+DELETE http://localhost:8000/charger/62e12a306579ce2e9b27568c
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjI0NTBjODI4NjBjN2UxZjA4ODk2OCIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY2MDIwMDUzOCwiZXhwIjoxNjYwMjg2OTM4fQ.axUAo5_RP-wnzpr1NLj4C2nKqz_Us3Fj_992A0Tm8U4
+
+###
+GET  http://localhost:8000/charger/62e129d3c3c4e13343431bdf
+
+
+###
+GET  http://localhost:8000/charger/all
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjI0NTBjODI4NjBjN2UxZjA4ODk2OCIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY2MDIwMDUzOCwiZXhwIjoxNjYwMjg2OTM4fQ.axUAo5_RP-wnzpr1NLj4C2nKqz_Us3Fj_992A0Tm8U4
+
+
+
+

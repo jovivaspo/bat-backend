@@ -1,0 +1,60 @@
+###LOGIN
+###OK
+POST http://localhost:8000/user/login
+Content-Type: application/json
+
+{
+    "email":"jorgevivas@innogestiona.es",
+    "password":"abcabc"
+}
+
+###PASSWORD INCORRECT
+
+POST http://localhost:8000/user/login
+Content-Type: application/json
+
+{
+    "email":"jovivaspo@gmail.com",
+    "password":"BattmovilTest"
+}
+
+
+###EMAIL INCORRECT
+POST http://localhost:8000/user/login
+Content-Type: application/json
+
+{
+    "email":"jovivo@gmail.com",
+    "password":"BattmovilTest_0987"
+}
+##################################################################################
+
+
+###CONFIRM EMAIL
+###OK
+GET  http://localhost:8000/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWEyZjM2NmQzZGRlYmUyNTU2ZjA2ZSIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NTk1MTQ2NzgsImV4cCI6MTY1OTYwMTA3OH0.qq0dCckCHf3e8FJ81yE0rJceeaeSmcHGK6slsOTJ41g
+
+###TOKEN ERROR
+GET  http://localhost:8000/user/confirm/GciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWEyZjM2NmQzZGRlYmUyNTU2ZjA2ZSIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NTk1MTQ2NzgsImV4cCI6MTY1OTYwMTA3OH0.qq0dCckCHf3e8FJ81yE0rJceeaeSmcHGK6slsOTJ41g
+
+
+##################################################################################
+
+###RESEND EMAIL
+###OK
+POST http://localhost:8000/user/resend
+Content-Type: application/json
+
+{
+    "email":"jovivaspo@gmail.com"
+}
+
+###GMAIL INCORRECT
+POST http://localhost:8000/user/resend
+Content-Type: application/json
+
+{
+    "email":"jovispo@gmail.com"
+}
+##################################################################################
+

@@ -29,7 +29,7 @@ userCtrl.getOneUser = async (req, res, next) => {
         if (user) {
             return res.status(200).json({user})
         } else {
-            const error = new Error('User does not found')
+            const error = new Error('Usuario no encontrado')
             res.status(404)
             return next(error)
         }
@@ -47,7 +47,7 @@ userCtrl.createUser = async (req, res, next) => {
         const user = await User.find({ email: email })
 
         if (user.length > 0) {
-            return res.status(200).json({ message: "Email in use" })
+            return res.status(200).json({ message: "Email en uso" })
         } else {
 
             const newUser = new User({
@@ -65,7 +65,7 @@ userCtrl.createUser = async (req, res, next) => {
             await sendEmail(userSaved.email, token)
 
             return res.status(201).json({
-                message: 'User created',
+                message: 'Usuario creado',
                 user: {
                     name,
                     email
@@ -150,8 +150,8 @@ userCtrl.loginUser = async (req, res, next) => {
         const user = await User.findOne({ email: email })
 
         if (!user || user.length === 0) {
-            console.log('Email not exist, ', email)
-            const error = new Error('Email not exist')
+            console.log('Email no registrado, ', email)
+            const error = new Error('Email no registrado')
             res.status(401)
             return next(error)
         }
@@ -161,8 +161,8 @@ userCtrl.loginUser = async (req, res, next) => {
         if (!match) {
             user.attempts++
             const userSaved = await user.save()
-            console.log('Password incorrect, ', email)
-            const error = new Error('Password incorrect')
+            console.log('Password incorrecta, ',email)
+            const error = new Error('Password incorrecta')
             res.status(401)
             return res.status(401).json({
                 error:error.message,
@@ -197,13 +197,13 @@ userCtrl.deleteUser = async (req, res, next) => {
         const userDeleted = await User.findByIdAndDelete(id)
 
         if (!userDeleted) {
-            const error = new Error('User not exist')
+            const error = new Error('Usuario no existe')
             res.status(404)
             return next(error)
         }
 
         return res.status(201).json({
-            message: `User deleted ${userDeleted.name}`
+            message: `Usuario borrado ${userDeleted.name}`
         })
 
     } catch (error) {
@@ -218,7 +218,7 @@ userCtrl.deleteAllUser = async (req, res, next) => {
         await User.deleteMany({ role: "user" })
 
         return res.status(201).json({
-            message: `Users deleted`
+            message: `Todos los usuarios fueron borrados`
         })
 
     } catch (error) {
@@ -227,7 +227,7 @@ userCtrl.deleteAllUser = async (req, res, next) => {
     }
 }
 
-
+//OJO SI SE ACTUALIZA EL CORREO ELTOKEN FALLARÁ
 userCtrl.updateUser = async (req, res, next) => {
     try {
 
@@ -238,14 +238,14 @@ userCtrl.updateUser = async (req, res, next) => {
         const userUpdated = await User.findByIdAndUpdate(id, body)
 
         if (!userUpdated) {
-            const error = new Error('User not exist')
+            const error = new Error('Usuario no encontrado')
             res.status(404)
             return next(error)
         }
 
 
         return res.status(201).json({
-            message: `User updated`,
+            message: `Usuario actualizado`,
             user: userUpdated
         })
 

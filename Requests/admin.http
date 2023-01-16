@@ -1,0 +1,58 @@
+###LOGIN AS ADMIN
+POST http://localhost:8000/user/login
+Content-Type: application/json
+
+{
+    "email":"jovivaspo@gmail.com",
+    "password":"BattmovilTest_0987"
+}
+##################################################################################
+
+###GET ALL USERS
+GET  http://localhost:8000/user
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzUzYzJmNDI0MGM4OTdlOGY5YzIzOCIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY3Mzg3MTIyNywiZXhwIjoxNjczOTU3NjI3fQ.IDq7Wz5J4FbJ8_5nXeYIoARlT3dL10XSKruxwnzCIO8
+##################################################################################
+
+###REGISTER A NEW USER
+###OK
+POST http://localhost:8000/user/register
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzUzYzJmNDI0MGM4OTdlOGY5YzIzOCIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY3Mzg3MTIyNywiZXhwIjoxNjczOTU3NjI3fQ.IDq7Wz5J4FbJ8_5nXeYIoARlT3dL10XSKruxwnzCIO8
+
+{
+    "name":"jorge usuario",
+    "email":"jorgevivas@innogestiona.es",
+    "password":"abcabc"
+}
+
+###EMAIL REGISTERED YET
+POST http://localhost:8000/user/register
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzUzYzJmNDI0MGM4OTdlOGY5YzIzOCIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY3Mzg3MTIyNywiZXhwIjoxNjczOTU3NjI3fQ.IDq7Wz5J4FbJ8_5nXeYIoARlT3dL10XSKruxwnzCIO8
+
+{
+    "name":"jorge usuario",
+    "email":"jorgevivas@innogestiona.es",
+    "password":"abcabc"
+}
+##################################################################################
+
+###DELETE ONE USER
+###OK
+DELETE http://localhost:8000/user/delete/63c54beaf0a8812cb61ae0f7
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzUzYzJmNDI0MGM4OTdlOGY5YzIzOCIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY3Mzg3MTIyNywiZXhwIjoxNjczOTU3NjI3fQ.IDq7Wz5J4FbJ8_5nXeYIoARlT3dL10XSKruxwnzCIO8
+
+###ID ERROR
+DELETE http://localhost:8000/user/delete/63c54beaf0a8812cb61ae0f7
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzUzYzJmNDI0MGM4OTdlOGY5YzIzOCIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY3Mzg3MTIyNywiZXhwIjoxNjczOTU3NjI3fQ.IDq7Wz5J4FbJ8_5nXeYIoARlT3dL10XSKruxwnzCIO8
+
+###TOKEN ERROR
+DELETE http://localhost:8000/user/delete/62ea3267bb7e4ab335732a28
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZTNkNjAwZTUxYWJhYmIxMzAxZjEwYyIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY1OTUxMzEwNCwiZXhwIjoxNjU5NTk5NTA0fQ.VrLpNKTppfw6cOG1aly1mOpdTZS2CKcD5cQ_j0mfQhQ
+
+
+###DELETE ALL
+DELETE http://localhost:8000/user/delete/users
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzUzYzJmNDI0MGM4OTdlOGY5YzIzOCIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY3Mzg3MTIyNywiZXhwIjoxNjczOTU3NjI3fQ.IDq7Wz5J4FbJ8_5nXeYIoARlT3dL10XSKruxwnzCIO8
+
+

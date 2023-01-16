@@ -1,0 +1,68 @@
+###ALL USES ONLY BY ADMIN
+###OK
+GET http://localhost:8000/uses/all
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzUzYzJmNDI0MGM4OTdlOGY5YzIzOCIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY3Mzg3MTIyNywiZXhwIjoxNjczOTU3NjI3fQ.IDq7Wz5J4FbJ8_5nXeYIoARlT3dL10XSKruxwnzCIO8
+
+#################################################################################
+
+###CREATE ONE USE BY AN USER
+###OK
+POST http://localhost:8000/uses/63c54dffd57ada88eae429cf
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzU0ZGZmZDU3YWRhODhlYWU0MjljZiIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NzM4NzYxNzEsImV4cCI6MTY3Mzk2MjU3MX0.I1SfX_dtE1Cz_6f43DQ93ocVMmT9bBsQuI8SVkliaCg
+Content-Type: application/json
+
+{
+    "dateInit": "04/02/2023 08:10",
+    "dateEnd": "04/02/2023 09:10"
+}
+
+###ERROR
+POST http://localhost:8000/uses/63c54dffd57ada88eae429cf
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzU0ZGZmZDU3YWRhODhlYWU0MjljZiIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NzM4NzYxNzEsImV4cCI6MTY3Mzk2MjU3MX0.I1SfX_dtE1Cz_6f43DQ93ocVMmT9bBsQuI8SVkliaCg
+Content-Type: application/json
+
+{
+    "dateInit": "04/02/2023 08:10",
+    "dateEnd": "04/02/2023 09:10"
+}
+
+
+#################################################################################
+
+###GET ALL USES BY AN USER
+###OK
+GET http://localhost:8000/uses/63c54dffd57ada88eae429cf
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzU0ZGZmZDU3YWRhODhlYWU0MjljZiIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NzM4NzYxNzEsImV4cCI6MTY3Mzk2MjU3MX0.I1SfX_dtE1Cz_6f43DQ93ocVMmT9bBsQuI8SVkliaCg
+
+###ERROR
+GET http://localhost:8000/uses/63c54dffd57ada88eae428cf
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzU0ZGZmZDU3YWRhODhlYWU0MjljZiIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NzM4NzYxNzEsImV4cCI6MTY3Mzk2MjU3MX0.I1SfX_dtE1Cz_6f43DQ93ocVMmT9bBsQuI8SVkliaCg
+
+#################################################################################
+
+###GET ONE USE BY AN USER
+###OK
+GET http://localhost:8000/uses/63c54dffd57ada88eae429cf/63c555adbcfe1e534928a578
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzU0ZGZmZDU3YWRhODhlYWU0MjljZiIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NzM4NzYxNzEsImV4cCI6MTY3Mzk2MjU3MX0.I1SfX_dtE1Cz_6f43DQ93ocVMmT9bBsQuI8SVkliaCg
+
+
+#################################################################################
+
+###UPDATE ONE USE
+###OK
+PUT http://localhost:8000/uses/63c54dffd57ada88eae429cf/63c555adbcfe1e534928a578
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzU0ZGZmZDU3YWRhODhlYWU0MjljZiIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NzM4NzYxNzEsImV4cCI6MTY3Mzk2MjU3MX0.I1SfX_dtE1Cz_6f43DQ93ocVMmT9bBsQuI8SVkliaCg
+Content-Type: application/json
+
+{   "dateInit": "01/02/2022 18:10",
+    "dateEnd": "01/02/2022 19:10"
+}
+
+#################################################################################
+
+###DELETE ONE USE
+###OK
+DELETE http://localhost:8000/uses/63c54dffd57ada88eae429cf/63c555adbcfe1e534928a578
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzU0ZGZmZDU3YWRhODhlYWU0MjljZiIsImVtYWlsIjoiam9yZ2V2aXZhc0Bpbm5vZ2VzdGlvbmEuZXMiLCJpYXQiOjE2NzM4NzYxNzEsImV4cCI6MTY3Mzk2MjU3MX0.I1SfX_dtE1Cz_6f43DQ93ocVMmT9bBsQuI8SVkliaCg
+
+

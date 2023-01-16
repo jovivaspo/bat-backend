@@ -3,7 +3,7 @@ version: "3.9"
 #Definimos los servicios: app y mongodb
 services:
   #Indicamos la ruta en la cual se encuentra nuestro archivo Dockerfile
-  api:
+  api-battmovil:
     restart: always
     # Indicamos que el servicio se genera a partir del Dockerfile que se encuentra en esta misma ruta
     build:
