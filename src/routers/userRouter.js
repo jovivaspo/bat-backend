@@ -6,11 +6,28 @@ const userCtrl  = require('../controllers/userController')
 const verifyTokenAdmin = require('../middleware/verifyTokenAdmin')
 const verifyTokenUser = require('../middleware/verifyTokenUser')
 
-
-const router = Router()
-
 /*USERS*/
 /*Routes eneables by the admin*/
+const router = Router()
+
+
+/**
+ * @swagger
+ * /user:
+ *   get:
+ *     summary: Get all user.
+ *     security:
+ *        - bearerAuth: []
+ *     responses:
+ *       '200':
+ *         description: A list of users.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object   
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+*/
 router.get('/', verifyTokenAdmin, userCtrl.getAllUsers)
 router.post('/register', verifyTokenAdmin, userCtrl.createUser)
 router.delete('/delete/users', verifyTokenAdmin, userCtrl.deleteAllUser)
