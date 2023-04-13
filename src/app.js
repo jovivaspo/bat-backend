@@ -1,6 +1,5 @@
 /*MDULES*/
 const express = require('express')
-const path = require("path")
 const config = require('./config')
 const cors = require('cors')
 const helmet = require('helmet')
@@ -8,36 +7,11 @@ const createAdmin = require('./services/createAdmin')
 const notFound = require('./middleware/notFound')
 const handlerError = require('./middleware/handlerError')
 require('./database')
+const swaggerSpec = require("./swaggerConfig")
 
 //SWAGGER
 const swaggerUI = require("swagger-ui-express")
 const swaggerJsDoc = require("swagger-jsdoc")
-
-// Definir el esquema de seguridad
-const securityDef = {
-    bearerAuth: {
-      type: 'http',
-      scheme: 'bearer',
-      bearerFormat: 'JWT',
-    },
-  };
-
-const swaggerSpec = {
-    definition:{
-        openapi: "3.0.0",
-        info:{
-            title:"Battmovil API docs",
-            version:"1.0.0"
-        },
-        servers:[
-            {url: "http://localhost:8000"}
-        ],
-       security:[securityDef]
-    },
-    apis: [path.join(__dirname, './routers/*.js'), path.join(__dirname, './models/*.js')],
-    
-}
-
 
 /*CREATE APP*/
 const app = express()
