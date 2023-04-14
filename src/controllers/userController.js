@@ -227,7 +227,7 @@ userCtrl.deleteAllUser = async (req, res, next) => {
     }
 }
 
-//OJO SI SE ACTUALIZA EL CORREO ELTOKEN FALLARÁ
+//OJO SI SE ACTUALIZA EL CORREO EL TOKEN FALLARÁ
 userCtrl.updateUser = async (req, res, next) => {
     try {
 

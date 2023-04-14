@@ -56,7 +56,7 @@ usesCtrl.createUse = async (req, res, next) => {
 
         await user.save()
 
-        return res.status(202).json({ message:"Usuario creado", use: useSaved, user })
+        return res.status(201).json({ message:"Usuario creado", use: useSaved, user })
 
     } catch (error) {
         console.log(error)
@@ -182,7 +182,7 @@ usesCtrl.getAll = async (req, res, next) => {
     try {
        const uses = await Uses.find()
 
-       return res.status(202).json({
+       return res.status(200).json({
        uses
        })
     } catch (error) {

@@ -292,7 +292,80 @@ router.post('/register', verifyTokenAdmin, userCtrl.createUser)
 router.delete('/delete/users', verifyTokenAdmin, userCtrl.deleteAllUser)
 router.delete('/delete/:id', verifyTokenAdmin, userCtrl.deleteUser)
 
+
 /*Rutas accesibles para los usuarios*/
+
+
+/**
+ * @swagger
+ * /user/{id}:
+ *   get:
+ *     summary: Obtener los datos de un usuario por id
+ *     security:
+ *        - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: id del usuario a obtener
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Usuario obtenido con éxito
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               items:
+ *                  $ref: '#/components/schemas/User'   
+ *       '404':
+ *         description: Usuario no encontrado     
+ *     tags:
+ *         - User Rutas para Users 
+ *
+ */
+
+/**
+ * @swagger
+ * /user/{id}:
+ *   put:
+ *     summary: Actualizar un usuario existente.
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: ID del usuario a actualizar.
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'
+ *     responses:
+ *       '201':
+ *         description: Usuario actualizado exitosamente.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Mensaje de éxito.
+ *                 user:
+ *                   $ref: '#/components/schemas/User'
+ *       '404':
+ *         description: El usuario especificado no se ha encontrado
+ *     tags:
+ *          - User Rutas para Users
+ *          
+ */
+
 router.get('/:id', verifyTokenUser, userCtrl.getOneUser)
 router.put('/update/:id', verifyTokenUser , userCtrl.updateUser)
 
