@@ -13,7 +13,7 @@ chargerCtrl.create = async (req, res, next) => {
 
         const chargerSaved = await charger.save()
 
-        return res.status(202).json({
+        return res.status(201).json({
             message: "New charger created",
             chargerSaved
         })

@@ -6,6 +6,8 @@ const { Schema, model, models } = require('mongoose')
  *   schemas:
  *     Charger:
  *       type: object
+ *       required:
+ *         - name
  *       properties:
  *         name:
  *           type: string
@@ -37,7 +39,7 @@ const { Schema, model, models } = require('mongoose')
  */
 
 const chargerSchema = new Schema({
-    name: {type:String},
+    name: {type:String, required: true},
     users:[{type:Schema.Types.ObjectId, ref:'User'}],
     uses:[{type:Schema.Types.ObjectId,ref:'Uses'}],
     state: {

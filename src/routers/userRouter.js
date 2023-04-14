@@ -6,7 +6,7 @@ const userCtrl  = require('../controllers/userController')
 const verifyTokenAdmin = require('../middleware/verifyTokenAdmin')
 const verifyTokenUser = require('../middleware/verifyTokenUser')
 
-/*USERS*/
+
 const router = Router()
 
 /*Rutas generales*/

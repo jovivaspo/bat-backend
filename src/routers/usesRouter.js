@@ -8,7 +8,7 @@ const verifyTokenUser = require('../middleware/verifyTokenUser')
 
 const router = Router()
 
-/*USES*/
+
 /*Rutas accesibles para el admin*/
 /**
  * @swagger
