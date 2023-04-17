@@ -88,13 +88,25 @@ router.get('/all', verifyTokenAdmin , usesCtrl.getAll)
  *         description: Id del usuario que crea el uso
  *         required: true
  *         schema:
- *           type: string
+ *            type: string
  *      requestBody:
  *          required: true
  *          content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/Uses'
+ *                      type: object
+ *                      properties:
+ *                          charger: 
+ *                              type: string
+ *                              description: id cargador en el cual se hace el uso
+ *                          dateInit:
+ *                              type: string
+ *                              formtat: date-time
+ *                              description: fecha y hora de inico del uso
+ *                          dateEnd:
+ *                              type: string
+ *                              formtat: date-time
+ *                              description: fecha y hora final del uso            
  *      responses:
  *       '201':
  *         description: Nuevo uso creado
@@ -107,7 +119,7 @@ router.get('/all', verifyTokenAdmin , usesCtrl.getAll)
  *                      type: string
  *                      description: Mensaje de éxito
  *                  use:
- *                      $ref: '#/components/schemas/Use'
+ *                      $ref: '#/components/schemas/Uses'
  *                  user:
  *                      $ref: '#/components/schemas/User'
  *       '404':
@@ -215,13 +227,13 @@ router.get('/all', verifyTokenAdmin , usesCtrl.getAll)
  *     parameters:
  *       - in: path
  *         name: id_user
- *         description: Id del usuario del que se quieren obtener los usos.
+ *         description: Id del usuario del que se quiere borrar el uso.
  *         required: true
  *         schema:
  *           type: string
  *       - in: path
  *         name: id
- *         description: Id del uso a obtener
+ *         description: Id del uso a borrar
  *         required: true
  *         schema:
  *           type: string

@@ -2,6 +2,7 @@
 const { config } = require('dotenv')
 const User = require('../models/User')
 const Uses = require('../models/Uses')
+const Charger = require('../models/Charger')
 
 const usesCtrl = {}
 
@@ -30,21 +31,26 @@ usesCtrl.getAllUses = async (req, res, next) => {
 usesCtrl.createUse = async (req, res, next) => {
     try {
         const { id_user } = req.params
-        const { dateInit, dateEnd } = req.body
+        const { dateInit, dateEnd, id_charger } = req.body
 
-        const user = await User.findById(id_user)
-
-        if (!user) {
-            const error = new Error('Usuario no encontrado')
-            res.status(404)
-            next(error)
+        if(!id_charger || !dateInit || !dateEnd){
+            const error = new Error('Petición incorrecta')
+            res.status(400)
+            return next(error)
         }
 
-        const  datei =  new Date(dateInit)
-        console.log(datei)
+        const user = await User.findById(id_user)
+        const charger = await Charger.findById(id_charger)
+
+        if (!user || !charger) {
+            const error = new Error('Usuario o cargador no encontrado')
+            res.status(404)
+            return next(error)
+        }
 
         const newUse = new Uses({
             user: id_user,
+            charger: id_charger,
             dateInit: new Date(dateInit),
             dateEnd: new Date(dateEnd),
             consumption: 0
@@ -54,7 +60,11 @@ usesCtrl.createUse = async (req, res, next) => {
 
         user.uses = user.uses.concat(useSaved.id)
 
+        charger.uses = charger.uses.concat(useSaved.id)
+
         await user.save()
+
+        await charger.save()
 
         return res.status(201).json({ message:"Uso creado", use: useSaved, user })
 
@@ -84,7 +94,7 @@ usesCtrl.getOneUse = async (req, res, next) => {
             return next(error)
         }
 
-        return res.status(200).json({ use})
+        return res.status(200).json({use})
 
     } catch (error) {
         console.log(error)
@@ -149,7 +159,6 @@ usesCtrl.updateUse = async (req, res, next) => {
     }
 }
 
-
 usesCtrl.deleteOneUse = async (req, res, next) => {
     try {
         const { id_user, id } = req.params
@@ -157,7 +166,7 @@ usesCtrl.deleteOneUse = async (req, res, next) => {
         const user = await User.findById(id_user)
 
         if (!user) {
-            const error = new Error('Uuario no encontrado')
+            const error = new Error('Usuario no encontrado')
             res.status(404)
             return next(error)
         }
@@ -170,10 +179,21 @@ usesCtrl.deleteOneUse = async (req, res, next) => {
             return next(error)
         }
 
+        const charger = await Charger.findById(use.charger)
+
+        if (!charger) {
+            const error = new Error('Cargador no encontrado')
+            res.status(404)
+            return next(error)
+        }
+
+        charger.uses = charger.uses.filter(use => use.toString() !== id)
+
         user.uses = user.uses.filter(use => use.toString() !== id)
 
-        const userUpdated = await user.save()
+        await charger.save()
 
+        const userUpdated = await user.save()
 
         return res.status(201).json({
             message: 'Uso borrado',
