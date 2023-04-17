@@ -29,8 +29,6 @@ const router = Router()
  *                                      type: array
  *                                      items:
  *                                          $ref: '#/components/schemas/Charger'
- *              '500':
- *                   $ref: '#/components/schemas/ErrorServidor'
  *      
  *          tags:
  *            - Charger Rutas Admin
@@ -64,6 +62,65 @@ const router = Router()
  *                                  message:
  *                                      type: string
  *                                      description: Nuevo cargador creado
+ *      
+ *          tags:
+ *            - Charger Rutas Admin
+ */
+
+/**
+ * @swagger
+ *  /charger/{id}:
+ *      delete:
+ *          summary: Crear un nuevo cargador
+ *          security:
+ *            - bearerAuth: []
+ *          parameters:
+ *              - in: path
+ *                name: id
+ *                description: id del cargador a borrar
+ *                required: true
+ *                schema:
+ *                  type: string
+ *          responses:
+ *            '201':
+ *              description: Borrar cargador
+ *              content:
+ *                application/json:
+ *                  schema:
+ *                    type: object
+ *                    properties:
+ *                     message:
+ *                       type: string
+ *                       description: "Cargador borrado"
+ *      
+ *          tags:
+ *            - Charger Rutas Admin
+ */
+
+/**
+ * @swagger
+ *  /charger/{id}:
+ *      get:
+ *          summary: Obtener cargador por id
+ *          security:
+ *            - bearerAuth: []
+ *          parameters:
+ *              - in: path
+ *                name: id
+ *                description: id del cargador a obtener
+ *                required: true
+ *                schema:
+ *                  type: string
+ *          responses:
+ *            '200':
+ *              description: Cargador obtenido con éxito
+ *              content:
+ *                application/json:
+ *                  schema:
+ *                    type: object
+ *                    properties:
+ *                      charger:
+ *                        $ref: '#/components/schemas/Charger'  
  *      
  *          tags:
  *            - Charger Rutas Admin

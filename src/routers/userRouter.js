@@ -172,9 +172,11 @@ router.post('/resend', userCtrl.resendEmail)
  *         content:
  *           application/json:
  *             schema:
- *               type: object   
- *               items:
- *                 $ref: '#/components/schemas/User'
+ *               type: object  
+ *               properties:
+ *                  users: 
+ *                      items:
+ *                      $ref: '#/components/schemas/User'
  *     tags:
  *          - User Rutas Admin  
  *
@@ -317,8 +319,9 @@ router.delete('/delete/:id', verifyTokenAdmin, userCtrl.deleteUser)
  *           application/json:
  *             schema:
  *               type: object
- *               items:
- *                  $ref: '#/components/schemas/User'   
+ *               properties: 
+ *                  user:
+ *                      $ref: '#/components/schemas/User'   
  *       '404':
  *         description: Usuario no encontrado     
  *     tags:
@@ -328,7 +331,7 @@ router.delete('/delete/:id', verifyTokenAdmin, userCtrl.deleteUser)
 
 /**
  * @swagger
- * /user/{id}:
+ * /user/update/{id}:
  *   put:
  *     summary: Actualizar un usuario existente.
  *     security:

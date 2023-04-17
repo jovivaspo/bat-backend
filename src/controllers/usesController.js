@@ -56,7 +56,7 @@ usesCtrl.createUse = async (req, res, next) => {
 
         await user.save()
 
-        return res.status(201).json({ message:"Usuario creado", use: useSaved, user })
+        return res.status(201).json({ message:"Uso creado", use: useSaved, user })
 
     } catch (error) {
         console.log(error)
@@ -97,7 +97,7 @@ usesCtrl.updateUse = async (req, res, next) => {
         const { id_user, id } = req.params
         const { body } = req
 
-        console.log(body)
+        //console.log(body)
 
         const user = await User.findById(id_user)
 
@@ -119,6 +119,11 @@ usesCtrl.updateUse = async (req, res, next) => {
         let keys = Object.keys(body)
 
         await Promise.all(keys.map(async (key) => {
+            if(key === 'consumption'){
+                await Uses.findByIdAndUpdate(id, {
+                    consumption: body[key]
+                })
+            }
             if (key === 'dateInit') {
                 await Uses.findByIdAndUpdate(id, {
                     dateInit: new Date(body[key])
@@ -129,9 +134,12 @@ usesCtrl.updateUse = async (req, res, next) => {
                     dateEnd: new Date(body[key])
                 })
             }
+
         }))
 
         const useUpdated = await Uses.findById(id)
+
+       //console.log(useUpdated)
 
         return res.status(201).json({  message: 'Uso actualizado', useUpdated })
 

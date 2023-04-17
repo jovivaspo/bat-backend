@@ -32,8 +32,8 @@ chargerCtrl.delete = async (req, res, next) => {
 
         await Charger.findByIdAndDelete(id)
 
-        return res.status(202).json({
-            message: "Charger deleted",
+        return res.status(201).json({
+            message: "Cargador borrado",
         })
 
     } catch (error) {
