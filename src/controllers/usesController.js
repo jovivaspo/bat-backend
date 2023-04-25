@@ -129,11 +129,6 @@ usesCtrl.updateUse = async (req, res, next) => {
         let keys = Object.keys(body)
 
         await Promise.all(keys.map(async (key) => {
-            if(key === 'consumption'){
-                await Uses.findByIdAndUpdate(id, {
-                    consumption: body[key]
-                })
-            }
             if (key === 'dateInit') {
                 await Uses.findByIdAndUpdate(id, {
                     dateInit: new Date(body[key])

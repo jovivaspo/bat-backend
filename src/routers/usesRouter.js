@@ -179,7 +179,7 @@ router.get('/all', verifyTokenAdmin , usesCtrl.getAll)
  *     parameters:
  *       - in: path
  *         name: id_user
- *         description: Id del usuario del que se quieren obtener los usos.
+ *         description: Id del usuario del que se quieren actualizar el uso.
  *         required: true
  *         schema:
  *           type: string
@@ -194,7 +194,18 @@ router.get('/all', verifyTokenAdmin , usesCtrl.getAll)
  *          content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/Uses'
+ *                      type: object
+ *                      properties:
+ *                          dateInit:
+ *                              type: string
+ *                              format: date-time
+ *                              description: Fecha y hora de inicio del uso
+ *                              example: "2023-04-12T12:34:56.789Z"
+ *                          dateEnd:
+ *                              type: string
+ *                              format: date-time
+ *                              description: Fecha y hora de fin del uso
+ *                              example: "2023-04-12T13:00:00.000Z"
  *     responses:
  *       '201':
  *         description: Uso actualizado
