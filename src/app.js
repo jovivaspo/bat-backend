@@ -33,6 +33,7 @@ app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)))
 app.use('/user', require('./routers/userRouter'))
 app.use('/uses', require('./routers/usesRouter'))
 app.use('/charger', require('./routers/chargerRouter'))
+app.use('/server-charger', require('./routers/serverChargerRouter'))
 
 /*HANDLER ERRORS*/
 app.use(notFound)
