@@ -19,6 +19,7 @@ module.exports = {
     EMAIL_ADMIN: process.env.EMAIL_ADMIN,
     KEY: process.env.KEY,
     SEND_EMAIL: process.env.SEND_EMAIL,
-    SEND_PASS: process.env.SEND_PASS
+    SEND_PASS: process.env.SEND_PASS,
+    LOCAL_URL_DOC: process.env.LOCAL_URL_DOC
 
 }
