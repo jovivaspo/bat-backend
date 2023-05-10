@@ -33,6 +33,8 @@ const verifyTokenUser = async (req, res, next) => {
             }
     
             console.log("Token valido")
+            req.email = decodedToken.email
+            req.id = decodedToken.id
             next()
         })
 

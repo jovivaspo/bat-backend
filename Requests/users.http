@@ -18,6 +18,10 @@ Content-Type: application/json
     "password":"abcabc"
 }
 
+###RENEW
+GET http://localhost:8000/user/renew-token
+Authorization:  bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2QyYTM1ZWUwYjQwODJiNWVkZDY3MSIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY4MzcxNDQ4OCwiZXhwIjoxNjgzODAwODg4fQ.-OHPSIvDgQTlAuknoh7cFiC3DKOobRw6Tzx6_bsYRBE
+
 #####################################################################
 ###UPDATE
 ###OK

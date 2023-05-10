@@ -78,8 +78,10 @@ const router = Router()
  *             schema:
  *               type: object
  *               properties:
- *                 user:
- *                   $ref: '#/components/schemas/User'
+ *                 email:
+ *                   type: string
+ *                 id:
+ *                  type: string
  *                 token:
  *                   type: string
  *       '401':
@@ -98,10 +100,10 @@ const router = Router()
 
 /**
  * @swagger
- * /user/confirm/{token}:
- *   get:
- *     summary: Verificar cuenta
- *     description: Verificar cuenta de usuario a través de un token enviado por correo electrónico
+ * /user/renew-token:
+ *   post:
+ *     summary: Renovar el token.
+ *     description: Reenvar token.
  *     parameters:
  *       - in: path
  *         name: token
@@ -109,6 +111,40 @@ const router = Router()
  *         required: true
  *         schema:
  *           type: string
+ *     responses:
+ *       '200':
+ *         description: Token renovado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 email:
+ *                   type: string
+ *                 id:
+ *                  type: string
+ *                 token:
+ *                   type: string
+ *       '401':
+ *         description: Permiso denegado
+ *         content:
+ *           application/json:
+ *             schema:
+ *                 $ref: '#/components/schemas/PermisoDenegado'
+ *               
+ *     tags:
+ *       - User Rutas Generales
+ *
+ */
+
+/**
+ * @swagger
+ * /user/confirm/{token}:
+ *   get:
+ *     summary: Verificar cuenta
+ *     description: Verificar cuenta de usuario a través de un token enviado por correo electrónico
+ *     security:
+ *        - bearerAuth: []
  *     responses:
  *       '200':
  *         description: Cuenta verificada. Se devuelve un archivo HTML que redirige a la aplicación.
@@ -289,6 +325,7 @@ router.post('/resend', userCtrl.resendEmail)
  *
  */
 
+router.get('/renew-token', verifyTokenUser, userCtrl.renewToken)
 router.get('/', verifyTokenAdmin, userCtrl.getAllUsers)
 router.post('/register', verifyTokenAdmin, userCtrl.createUser)
 router.delete('/delete/users', verifyTokenAdmin, userCtrl.deleteAllUser)

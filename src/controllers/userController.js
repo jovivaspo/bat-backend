@@ -67,8 +67,8 @@ userCtrl.createUser = async (req, res, next) => {
             return res.status(201).json({
                 message: 'Usuario creado',
                 user: {
-                    name,
-                    email
+                    email,
+                    id: userSaved._id
                 }
             })
         }
@@ -180,7 +180,7 @@ userCtrl.loginUser = async (req, res, next) => {
 
         console.log("Inicio sesión: ", email)
 
-        return res.status(201).json({ user: userSaved, token })
+        return res.status(201).json({ email: userSaved.email, id:userSaved._id , token })
 
 
     } catch (error) {
@@ -225,6 +225,19 @@ userCtrl.deleteAllUser = async (req, res, next) => {
         console.log(error)
         next(error)
     }
+}
+
+userCtrl.renewToken = async (req, res, next) => {
+    try {
+        const { id, email } = req;
+    
+        const token = await createToken(id, email)
+    
+        return res.status(201).json({ id, email, token });
+      } catch (error) {
+        console.log(error);
+        next(error)
+      }
 }
 
 //OJO SI SE ACTUALIZA EL CORREO EL TOKEN FALLARÁ
