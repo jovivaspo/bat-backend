@@ -17,7 +17,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzUzYzJmN
 ###OK
 POST http://localhost:8000/user/register
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzUzYzJmNDI0MGM4OTdlOGY5YzIzOCIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY3Mzg3MTIyNywiZXhwIjoxNjczOTU3NjI3fQ.IDq7Wz5J4FbJ8_5nXeYIoARlT3dL10XSKruxwnzCIO8
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2QyYTM1ZWUwYjQwODJiNWVkZDY3MSIsImVtYWlsIjoiam92aXZhc3BvQGdtYWlsLmNvbSIsImlhdCI6MTY4NDQ5MjM2MSwiZXhwIjoxNjg0NTc4NzYxfQ.43ezUpbzrVRJqSGxphbxbG7-Iebkse_9m97Pim477TY
 
 {
     "name":"jorge usuario",
